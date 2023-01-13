@@ -63,11 +63,10 @@ def folderProcessing(src_path: str, fileExtentionTarget: str, original_dest_dir:
 
     processingNoticeMsg = "Processing all images with the {} extention.".format(fileExtentionTarget)
     
-    print()
-    print("~" * len(processingNoticeMsg))
+    print(("\n" + "*" * len(processingNoticeMsg)) * 2)
     print("Folder detected")
     print(processingNoticeMsg)
-    print("~" * len(processingNoticeMsg))
+    print("*" * len(processingNoticeMsg) + "\n" + "*" * len(processingNoticeMsg))
     
     
     dest_dir = original_dest_dir
@@ -80,6 +79,15 @@ def folderProcessing(src_path: str, fileExtentionTarget: str, original_dest_dir:
         rotateMagic(filePath, originalFileName, dest_dir, pitch, yaw, roll)
         
         dest_dir = original_dest_dir
+    
+    
+    finishingUpMsg = "All files saved to {}".format(original_dest_dir)
+    
+    print(("\n" + "*" * len(finishingUpMsg)) * 2)
+    print("\nBatch Rotation complete.")
+    print(finishingUpMsg)
+    print(("\n" + "*" * len(finishingUpMsg)) * 2)
+    print()
 
 
 # Checking for arguments passed from command line / terminal
