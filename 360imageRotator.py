@@ -75,6 +75,10 @@ def folderProcessing(src_path: str, fileExtentionTarget: str, original_dest_dir:
         
         originalFileName = filePath.replace(src_path, "")
         
+        print()
+        print(originalFileName)
+        print()
+        
         dest_dir = original_dest_dir + originalFileName
         rotateMagic(filePath, originalFileName, dest_dir, pitch, yaw, roll)
         
@@ -89,6 +93,7 @@ def folderProcessing(src_path: str, fileExtentionTarget: str, original_dest_dir:
     print(("\n" + "*" * len(finishingUpMsg)) * 2)
     print()
 
+#def getOriginalFilename(
 
 # Checking for arguments passed from command line / terminal
 if len(sys.argv) > 1:
@@ -100,7 +105,24 @@ if len(sys.argv) > 1:
     roll = int(sys.argv[6])
     
     if pathIsAFile(src_path):
-        rotateMagic(src_path, dest_dir, pitch, yaw, roll)
+    
+        originalFileName = os.path.basename(src_path)
+        
+        print("Debug Mode:")
+        print()
+        print(src_path)
+        print()
+        print(fileExtentionTarget)
+        print()
+        print(originalFileName)
+        print()
+        print(dest_dir)
+        print()
+        print("Pitch: {}, Yaw: {}, Roll: {}".format(pitch, yaw, roll))
+        print()
+        print()
+        
+        rotateMagic(src_path, originalFileName, dest_dir, pitch, yaw, roll)
     
     else:
         folderProcessing(src_path, fileExtentionTarget, dest_dir, pitch, yaw, roll)
@@ -117,9 +139,10 @@ else:
     yaw = int(input("Enter the change in yaw rotation angle in degrees: "))
     roll = int(input("Enter the change in roll rotation angle in degrees: "))
    
+    originalFileName = os.path.basename(src_path)
    
     if pathIsAFile(src_path):
-        rotateMagic(src_path, dest_dir, pitch, yaw, roll)
+        rotateMagic(src_path, originalFileName, dest_dir, pitch, yaw, roll)
     
     else:
         folderProcessing(src_path, fileExtentionTarget, dest_dir, pitch, yaw, roll)
